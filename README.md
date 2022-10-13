@@ -31,8 +31,8 @@ Environment variables will be your best friend for this project!
 
 ## Installation
 
-	 - Clone this repository: `https://github.com/ezkielmisgae/AirBnB_clone.git`.
-	 - Change directories into the repository: `cd AirBnB_clone`
+	 - Clone this repository: `https://github.com/fevenbelay23/AirBnB_clone_v2.git`.
+	 - Change directories into the repository: `cd AirBnB_clone_v2`
 
 ## Authors
 
