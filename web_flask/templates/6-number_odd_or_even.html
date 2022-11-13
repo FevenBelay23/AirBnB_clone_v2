@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <HTML lang="en">
-<<<<<<< HEAD
-
-<HEAD>
-    <TITLE>HBNB</TITLE>
-</HEAD>
-
-<BODY>
-    <H1>Number: {{ number }} is {{ parity }}</H1>
-</BODY>
-
-</HTML>
-=======
     <HEAD>
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-        <H1>Number: {{ n }} is {{ evenness }}</H1>
+        {% if (value % 2 == 0) %}
+        <H1>Number: {{ value }} is even</H1>
+	{% else %}
+	<H1>Number: {{ value }} is odd</H1>
+	{% endif %}
     </BODY>
 </HTML>
->>>>>>> 212529db4b955a72d996660137790c2497399ff5
