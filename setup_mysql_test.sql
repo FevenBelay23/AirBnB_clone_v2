@@ -1,19 +1,7 @@
--- Creates a MySQL server with:
---   Database ezekielmisgae.
---   User ezekielmisgae with password ezekielmisgae in localhost.
---   Grants all privileges for ubuntu on 100.27.11.71.
---   Grants SELECT privilege for ubuntu on performance_schema.
+-- prepares a MySQL server for the project
 
-CREATE DATABASE IF NOT EXISTS ezekielmisgae;
-CREATE USER
-    IF NOT EXISTS 'ubuntu'@'100.27.11.71'
-    IDENTIFIED BY 'ezekielmisgae';
-GRANT ALL PRIVILEGES
-   ON `ezekielmisgae`.*
-   TO 'ubuntu'@'100.27.11.71'
-   IDENTIFIED BY 'ezekielmisgae';
-GRANT SELECT
-   ON `performance_schema`.*
-   TO 'ubuntu'@'100.27.11.71'
-   IDENTIFIED BY 'ezekielmisgae';
+CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
+CREATE USER IF NOT EXISTS 'hbnb_dev'@'localhost' IDENTIFIED BY 'hbnb_dev_pwd';
+GRANT ALL PRIVILEGES ON `hbnb_dev_db`.* TO 'hbnb_dev'@'localhost';
+GRANT SELECT ON `performance_schema`.* TO 'hbnb_dev'@'localhost';
 FLUSH PRIVILEGES;
