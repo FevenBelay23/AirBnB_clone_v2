@@ -1,23 +1,22 @@
 #!/usr/bin/python3
-"""Flask app to generate html list of all states from storage"""
-from flask import Flask, render_template
+""" A script that starts a flask web application"""
 from models import storage
-app = Flask('web_flask')
-app.url_map.strict_slashes = False
+from models.state import State
+from flask import Flask, render_template
+app = Flask(__name__)
 
 
-@app.route('/states_list')
-def list_of_states():
-    """Render html with unordered list of states from `storage`"""
-    states = sorted(storage.all('State').values(), key=lambda s: s.name)
-    return render_template('7-states_list.html', states=states)
-
+@app.route('/states_list', strict_slashes=False)
+def states_list():
+    """ displays a HTML page with a list of states """
+    states = storage.all(State)
+    return render_template('7-states_list.html')
 
 @app.teardown_appcontext
-def teardown_db(*args, **kwargs):
-    """Close database or file storage"""
+def close_db(error):
+    """ Remove the current SQLAlchemy Session """
     storage.close()
 
-
 if __name__ == "__main__":
+    """ Main Function """
     app.run(host='0.0.0.0', port=5000)
