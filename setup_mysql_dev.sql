@@ -4,16 +4,16 @@
 --   Grants all privileges for hbnb_dev on hbnb_dev_db.
 --   Grants SELECT privilege for hbnb_dev on performance_schema.
 
-CREATE DATABASE IF NOT EXISTS hbnb_dev_db;
+CREATE DATABASE IF NOT EXISTS ezekielmisgae;
 CREATE USER
-    IF NOT EXISTS 'hbnb_dev'@'localhost'
-    IDENTIFIED BY 'hbnb_dev_pwd';
+    IF NOT EXISTS 'ubuntu'@'100.27.11.71'
+    IDENTIFIED BY 'ezekielmisgae';
 GRANT ALL PRIVILEGES
-   ON `hbnb_dev_db`.*
-   TO 'hbnb_dev'@'localhost'
-   IDENTIFIED BY 'hbnb_dev_pwd';
+   ON `ezekielmisgae`.*
+   TO 'ubuntu'@'100.27.11.71'
+   IDENTIFIED BY 'ezekielmisgae';
 GRANT SELECT
    ON `performance_schema`.*
-   TO 'hbnb_dev'@'localhost'
-   IDENTIFIED BY 'hbnb_dev_pwd';
+   TO 'ubuntu'@'100.27.11.71'
+   IDENTIFIED BY 'ezekielmisgae';
 FLUSH PRIVILEGES;
