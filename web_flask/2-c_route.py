@@ -1,61 +1,31 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
-"""the `2-c_route` module
-starts a flask web application listening on `0.0.0.0:5000`
-"""
-from flask import Flask, escape
+""" 2. Script to start a Flask web application with 3 view functions """
+
+from flask import Flask
+
 
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
 
-@app.route("/")
-def index():
-    """returns `Hello HBNB!` message"""
-    return "Hello HBNB!"
-
-
-@app.route("/hbnb", strict_slashes=False)
-def hbnb():
-    """returns `HBNB` message"""
-    return "HBNB"
-
-
-@app.route("/c/<text>", strict_slashes=False)
-def c(text):
-    """returns `c` + `text`"""
-    text = text.replace("_", " ")
-    return "C %s" % escape(text)
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
-=======
-"""
-starts a Flask web application
-"""
-
-from flask import Flask
-app = Flask(__name__)
-
-
-@app.route('/', strict_slashes=False)
-def index():
-    """returns Hello HBNB!"""
+@app.route('/')
+def hello_world():
+    """ Returns some text. """
     return 'Hello HBNB!'
 
 
-@app.route('/hbnb', strict_slashes=False)
-def hbnb():
-    """returns HBNB"""
+@app.route('/hbnb')
+def hello():
+    """ Return other text. """
     return 'HBNB'
 
 
-@app.route('/c/<text>', strict_slashes=False)
-def cisfun(text):
-    """display “C ” followed by the value of the text variable"""
-    return 'C ' + text.replace('_', ' ')
+@app.route('/c/<text>')
+def c_text(text):
+    """ replace text with variable. """
+    text = text.replace('_', ' ')
+    return 'C {}'.format(text)
+
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port='5000')
->>>>>>> 212529db4b955a72d996660137790c2497399ff5
+    app.run(host='0.0.0.0', port=5000)
