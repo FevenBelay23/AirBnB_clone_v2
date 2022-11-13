@@ -1,58 +1,94 @@
 #!/usr/bin/python3
-"""Starts a Flask web application.
-
-The application listens on 0.0.0.0, port 5000.
-Routes:
-    /: Displays 'Hello HBNB!'.
-    /hbnb: Displays 'HBNB'.
-    /c/<text>: Displays 'C' followed by the value of <text>.
-    /python/(<text>): Displays 'Python' followed by the value of <text>.
-    /number/<n>: Displays 'n is a number' only if <n> is an integer.
+<<<<<<< HEAD
+"""the `4-number_route` module
+starts a flask web application listening on `0.0.0.0:5000`
 """
-from flask import Flask
-from flask import abort
+from flask import Flask, escape, render_template
 
 app = Flask(__name__)
+app.url_map.strict_slashes = False
 
 
-@app.route("/", strict_slashes=False)
-def hello_hbnb():
-    """Displays 'Hello HBNB!'."""
+@app.route("/")
+def index():
+    """returns `Hello HBNB!` message"""
     return "Hello HBNB!"
 
 
-@app.route("/hbnb", strict_slashes=False)
+@app.route("/hbnb")
 def hbnb():
-    """Displays 'HBNB'."""
+    """returns `HBNB` message"""
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slashes=False)
+@app.route("/c/<text>")
 def c(text):
-    """Displays 'C' followed by the value of <text>.
-
-    Replaces any underscores in <text> with slashes.
-    """
+    """returns `c` + `text`"""
     text = text.replace("_", " ")
-    return "C {}".format(text)
+    return "C %s" % escape(text)
 
 
-@app.route("/python", strict_slashes=False)
-@app.route("/python/<text>", strict_slashes=False)
-def python(text="is cool"):
-    """Displays 'Python' followed by the value of <text>.
+@app.route("/python")
+def python():
+    "returns `Python is cool`"
+    text = "is cool"
+    return "Python %s" % escape(text)
 
-    Replaces any underscores in <text> with slashes.
-    """
+
+@app.route("/python/<text>")
+def python_text(text):
+    """returns `Python ` + `text`"""
     text = text.replace("_", " ")
-    return "Python {}".format(text)
+    return "Python %s" % escape(text)
 
 
-@app.route("/number/<int:n>", strict_slashes=False)
+@app.route("/number/<int:n>")
 def number(n):
-    """Displays 'n is a number' only if n is an integer."""
-    return "{} is a number".format(n)
+    """returns `n` + `is a number` only if `n` is an integer"""
+    return "{} is a number".format(escape(n))
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", port=5000)
+=======
+"""
+starts a Flask web application
+"""
+
+from flask import Flask
+app = Flask(__name__)
+
+
+@app.route('/', strict_slashes=False)
+def index():
+    """returns Hello HBNB!"""
+    return 'Hello HBNB!'
+
+
+@app.route('/hbnb', strict_slashes=False)
+def hbnb():
+    """returns HBNB"""
+    return 'HBNB'
+
+
+@app.route('/c/<text>', strict_slashes=False)
+def cisfun(text):
+    """display “C ” followed by the value of the text variable"""
+    return 'C ' + text.replace('_', ' ')
+
+
+@app.route('/python', strict_slashes=False)
+@app.route('/python/<text>', strict_slashes=False)
+def pythoniscool(text='is cool'):
+    """display “Python ”, followed by the value of the text variable"""
+    return 'Python ' + text.replace('_', ' ')
+
+
+@app.route('/number/<int:n>', strict_slashes=False)
+def imanumber(n):
+    """display “n is a number” only if n is an integer"""
+    return "{:d} is a number".format(n)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port='5000')
+>>>>>>> 212529db4b955a72d996660137790c2497399ff5
