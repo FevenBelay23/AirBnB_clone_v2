@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Simple Flask web application"""
 from flask import Flask
-app = Flask('web_flask')
+app = Flask('app')
 
 
 @app.route('/airbnb-onepage/', strict_slashes=False)
