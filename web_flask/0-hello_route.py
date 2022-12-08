@@ -4,7 +4,7 @@ from flask import Flask
 app = Flask('web_flask')
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/airbnb-onepage/', strict_slashes=False)
 def hello_route():
     """Return simple string"""
     return 'Hello HBNB!'
